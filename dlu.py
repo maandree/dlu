@@ -5,15 +5,32 @@ import sys, os
 global dictionary_name, sought_word, display_envs, x_reads, reads, wordmod, standard_page_remap, load_dictionary, open_dictionary
 
 ## Parse command line.
-if len(sys.argv) == 2 and sys.argv[1] == '-l':
-    f_list = True
-elif len(sys.argv) != 3:
+def usage():
     print('Usage: dlu (-l | DICTIONARY WORD)', file = sys.stderr)
     sys.exit(1)
+f_list = False
+i, n = 1, len(sys.argv)
+while i < n:
+    if sys.argv[i] == '-l':
+        if f_list:
+            usage()
+        f_list = True
+    elif sys.argv[i] == '--':
+        i += 1
+        break
+    elif sys.argv[i].startswith('-'):
+        usage()
+    else:
+        break
+    i += 1
+if f_list:
+    if i != len(sys.argv):
+        usage()
 else:
-    dictionary_name = sys.argv[1]
-    sought_word = sys.argv[2]
-    f_list = False
+    if i + 2 != len(sys.argv):
+        usage()
+    dictionary_name = sys.argv[i]
+    sought_word = sys.argv[i + 1]
 
 # Default functions, can be overriden by configurations on call to load_dictionary.
 if not f_list:
