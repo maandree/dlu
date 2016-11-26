@@ -61,6 +61,7 @@ for key in l:
     g[key] = l[key]
 # Possible auto-selected configuration scripts,
 # earlier ones have precedence, we can only select one.
+config_file = None
 for file in ('$XDG_CONFIG_HOME/%/%rc', '$HOME/.config/%/%rc', '$HOME/.%rc', '$~/.config/%/%rc', '$~/.%rc', '/etc/%rc'):
     # Expand short-hands
     file = file.replace('/', os.sep).replace('%', 'dlu')

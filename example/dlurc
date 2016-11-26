@@ -1,0 +1,19 @@
+# -*- python -*-
+
+def list_dictionaries():
+    return sorted(dicts.keys())
+
+def load_dictionary(d):
+    global get
+    if d in dicts:
+        get = dicts[d]
+        return True
+    return False
+
+def get_list(d):
+    with open(d, 'rb') as file:
+        return [wordmod(w) for w in file.read().decode('utf-8', 'strict').split('\n') if w != '']
+
+dicts = {
+    'dict' : (lambda : ('dict.pdf', get_list('dict'), lambda p : p + 2))
+}

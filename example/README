@@ -1,0 +1,8 @@
+Step 1) cd into this directory.
+Step 2) Run `make`.
+Step 3) If ~/.config/dlu already exists move it.
+Step 4) Run `ln -s ~/.config/dlu .`.
+Step 5) You can know run ../dlu.py.
+Step 6) Run `rm ~/.config/dlu`
+Step 7) If ~/.config/dlu already existed, restore it.
+Step 8) If ~/.config/dlu didn't exist, install dlu and set it up.
