@@ -5,3 +5,5 @@ dict.pdf: dict.tex
 
 clean:
 	-rm dict.aux dict.log dict.pdf
+
+.PHONY: all clean
