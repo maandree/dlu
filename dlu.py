@@ -8,7 +8,7 @@ global dictionary_name, sought_word, display_envs, x_reads, reads, wordmod, stan
 if len(sys.argv) == 2 and sys.argv[1] == '-l':
     f_list = True
 elif len(sys.argv) != 3:
-    print('Usage: dlu [DICTIONARY WORD | -l]', file = sys.stderr)
+    print('Usage: dlu (-l | DICTIONARY WORD)', file = sys.stderr)
     sys.exit(1)
 else:
     dictionary_name = sys.argv[1]

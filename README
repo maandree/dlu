@@ -1,0 +1,47 @@
+NAME
+	dlu - Dictionary lookup utility
+
+SYNOPSIS
+	dlu (-l | dictionary word)
+
+DESCRIPTION
+	dlu looks up a selected word in a selected scanned dictionary.
+
+	dlu is configured via ~/.config/dlu/dlurc, a Python 3 file
+	which defines the functions:
+
+	list_dictionaries()
+		Returns a list of all dictionaries.
+
+	load_dictionary(dictionary : str)
+		Sets the fuction get() or a variable that get() reads
+		to identify which dictionary has been selected.
+
+	open_dictionary(file : str, page : int)
+		Opens the specified page in the specified file.
+
+		The default implementation opens atril(1), evince(1),
+		xpdf(1), or jfbview(1) to display the specified file
+		and page.
+
+	wordmod(word : str) -> str
+		Modifies and returns a word so that it can be used
+		to compare against known words in the dictionary.
+
+		The default implemention of this function covers the
+		word to lower case using Python's string class's
+		lower() function.
+
+	get() -> tuple
+		Returns a 3-tuple containing, in order: the filename
+		of the scanned dictionary, a list of the last word on
+		each page, and a int-to-int function that maps the
+		index of a word, in the list in the second element of
+		the returned tuple, to a page in the dictionary.
+
+OPTIONS
+	-l	Print a list of all dictionaries.
+
+FILES
+	~/.config/dlu/dlurc
+		The configuration file.

@@ -1,0 +1,76 @@
+.TH DLU 1 DLU
+.SH NAME
+dlu - Dictionary lookup utility
+.SH SYNOPSIS
+.B dlu
+.RI ( \-l
+|
+.I dictionary
+.IR word )
+.SH DESCRIPTION
+.B dlu
+looks up a selected
+.I word
+in a selected scanned
+.IR dictionary .
+.P
+.B dlu
+is configured via
+.BR ~/.config/dlu/dlurc ,
+a Python 3 file which defines the functions:
+.TP
+.BR list_dictionaries ()
+Returns a list of all dictionaries.
+.TP
+.BR load_dictionary "(\fIdictionary\fP : str)"
+Sets the fuction
+.BR get ()
+or a variable that
+.BR get ()
+reads to identify which
+.I dictionary
+has been selected.
+.TP
+.BR open_dictionary "(\fIfile\fP : str, \fIpage\fP : int)"
+Opens the specified
+.I page
+in the specified
+.IR file .
+
+The default implementation opens
+.BR atril (1),
+.BR evince (1),
+.BR xpdf (1),
+or
+.BR jfbview (1)
+to display the specified file and page.
+.TP
+.BR wordmod "(\fIword\fP : str) -> str"
+Modifies and returns a
+.I word
+so that it can be used to compare against known words
+in the dictionary.
+
+The default implemention of this function covers the
+.I word
+to lower case using Python's string class's
+.BR lower ()
+function.
+.TP
+.BR get "() -> tuple"
+Returns a 3-tuple containing, in order: the filename
+of the scanned dictionary, a list of the last word on
+each page, and a int-to-int function that maps the
+index of a word, in the list in the second element of
+the returned tuple, to a page in the dictionary.
+.SH OPTIONS
+.TP
+.B \-l
+Print a list of all dictionaries.
+.SH FILES
+.TP
+.B ~/.config/dlu/dlurc
+The configuration file.
+.SH BUGS
+Please report bugs to https://github.com/maandree/dlu/issues or to
+maandree@kth.se
