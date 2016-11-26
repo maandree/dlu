@@ -50,9 +50,9 @@ if not f_list:
         for command_lambda in reads[disps[0]]:
             command = command_lambda(filename, str(page));
             os.execvp(command[0], command)
-        sys.stderr.print("%s: could find any viewer to use." % sys.argv[0])
-        sys.stderr.print("%s:   file to open: %s" % (sys.argv[0], filename))
-        sys.stderr.print("%s:   page to open: %i" % (sys.argv[0], page))
+        print("%s: could find any viewer to use." % sys.argv[0], file = sys.stderr)
+        print("%s:   file to open: %s" % (sys.argv[0], filename), file = sys.stderr)
+        print("%s:   page to open: %i" % (sys.argv[0], page), file = sys.stderr)
         sys.exit(1)
 
 ## Load configurations, which holds data needed to perform the lookup.
@@ -111,7 +111,7 @@ if config_file is not None:
     # also redefine it for us.
     exec(code, g)
 else:
-    print('No configuration file found')
+    print('%s: no configuration file found' % sys.argv[0], file = sys.stderr)
     sys.exit(1)
 
 ## List available dictionaries.
@@ -121,7 +121,9 @@ if f_list:
     sys.exit(0)
 
 ## Perform lookup.
-load_dictionary(dictionary_name)
+if not load_dictionary(dictionary_name):
+    print('%s: dictionary not found: %s' % (sys.argv[0], dictionary_name), file = sys.stderr)
+    sys.exit(1)
 
 sought_word = wordmod(sought_word)
 filename, lasts, page_remap = get()

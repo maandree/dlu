@@ -13,9 +13,11 @@ DESCRIPTION
 	list_dictionaries()
 		Returns a list of all dictionaries.
 
-	load_dictionary(dictionary : str)
+	load_dictionary(dictionary : str) -> bool
 		Sets the fuction get() or a variable that get() reads
-		to identify which dictionary has been selected.
+		to identify which dictionary has been selected. The
+		function shall return True if the dictionary exists,
+		and False otherwise.
 
 	open_dictionary(file : str, page : int)
 		Opens the specified page in the specified file.

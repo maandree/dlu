@@ -22,14 +22,18 @@ a Python 3 file which defines the functions:
 .BR list_dictionaries ()
 Returns a list of all dictionaries.
 .TP
-.BR load_dictionary "(\fIdictionary\fP : str)"
+.BR load_dictionary "(\fIdictionary\fP : str) -> bool"
 Sets the fuction
 .BR get ()
 or a variable that
 .BR get ()
 reads to identify which
 .I dictionary
-has been selected.
+has been selected. The function shall return
+.B True
+if the dictionary exists, and
+.B False
+otherwise.
 .TP
 .BR open_dictionary "(\fIfile\fP : str, \fIpage\fP : int)"
 Opens the specified
