@@ -1,3 +1,5 @@
+.POSIX:
+
 PREFIX = /usr
 BINDIR = $(PREFIX)/bin
 DATADIR = $(PREFIX)/share
@@ -17,15 +19,15 @@ install-copyright: install-license
 
 install-cmd:
 	mkdir -p -- "$(DESTDIR)$(BINDIR)"
-	install -m755 -- dlu.py "$(DESTDIR)$(BINDIR)/$(COMMAND)"
+	cp -- dlu.py "$(DESTDIR)$(BINDIR)/$(COMMAND)"
 
 install-man:
 	mkdir -p -- "$(DESTDIR)$(MAN1DIR)"
-	install -m644 -- dlu.1 "$(DESTDIR)$(MAN1DIR)/$(COMMAND).1"
+	cp -- dlu.1 "$(DESTDIR)$(MAN1DIR)/$(COMMAND).1"
 
 install-license:
 	mkdir -p -- "$(DESTDIR)$(LICENSEDIR)/$(PKGNAME)"
-	install -m644 -- LICENSE "$(DESTDIR)$(LICENSEDIR)/$(PKGNAME)/LICENSE"
+	cp -- LICENSE "$(DESTDIR)$(LICENSEDIR)/$(PKGNAME)/LICENSE"
 
 uninstall:
 	-rm -- "$(DESTDIR)$(BINDIR)/$(COMMAND)"
@@ -36,5 +38,6 @@ uninstall:
 	-rmdir -- "$(DESTDIR)$(LICENSEDIR)/$(PKGNAME)"
 
 clean:
+	@:
 
 .PHONY: all clean

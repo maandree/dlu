@@ -14,7 +14,7 @@ DESCRIPTION
 		Returns a list of all dictionaries.
 
 	load_dictionary(dictionary : str) -> bool
-		Sets the fuction get() or a variable that get() reads
+		Sets the function get() or a variable that get() reads
 		to identify which dictionary has been selected. The
 		function shall return True if the dictionary exists,
 		and False otherwise.
@@ -30,7 +30,7 @@ DESCRIPTION
 		Modifies and returns a word so that it can be used
 		to compare against known words in the dictionary.
 
-		The default implemention of this function covers the
+		The default implementation of this function converts the
 		word to lower case using Python's string class's
 		lower() function.
 

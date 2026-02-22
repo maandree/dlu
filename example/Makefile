@@ -1,3 +1,5 @@
+.POSIX:
+
 all: dict.pdf
 
 dict.pdf: dict.tex

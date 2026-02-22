@@ -32,7 +32,7 @@ else:
     dictionary_name = sys.argv[i]
     sought_word = sys.argv[i + 1]
 
-# Default functions, can be overriden by configurations on call to load_dictionary.
+# Default functions, can be overridden by configurations on call to load_dictionary.
 if not f_list:
     display_envs = ['MDS_DISPLAY', 'MIR_DISPLAY', 'WAYLAND_DISPLAY', 'DISPLAY']
     x_reads = [
@@ -50,7 +50,7 @@ if not f_list:
         for command_lambda in reads[disps[0]]:
             command = command_lambda(filename, str(page));
             os.execvp(command[0], command)
-        print("%s: could find any viewer to use." % sys.argv[0], file = sys.stderr)
+        print("%s: could not find any viewer to use" % sys.argv[0], file = sys.stderr)
         print("%s:   file to open: %s" % (sys.argv[0], filename), file = sys.stderr)
         print("%s:   page to open: %i" % (sys.argv[0], page), file = sys.stderr)
         sys.exit(1)
@@ -77,10 +77,10 @@ for file in ('$XDG_CONFIG_HOME/%/%rc', '$HOME/.config/%/%rc', '$HOME/.%rc', '$~/
             else:
                 file = None
                 break
-    # Proceed if there where no errors.
+    # Proceed if there were no errors.
     if file is not None:
-        # With use $~ (instead of ~) for the user's proper home
-        # directroy. HOME should be defined, but it could be missing.
+        # We use $~ (instead of ~) for the user's proper home
+        # directory. HOME should be defined, but it could be missing
         # It could also be set to another directory.
         if file.startswith('$~'):
             import pwd
@@ -100,7 +100,7 @@ if config_file is not None:
     # Read configuration script file.
     with open(config_file, 'rb') as script:
         code = script.read()
-    # Decode configurion script file and add a line break
+    # Decode configuration script file and add a line break
     # at the end to ensure that the last line is empty.
     # If it is not, we will get errors.
     code = code.decode('utf-8', 'strict') + '\n'
