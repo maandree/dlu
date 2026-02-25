@@ -11,6 +11,7 @@ COMMAND = dlu
 PKGNAME = dlu
 
 all:
+	@:
 
 install: install-base install-doc
 install-base: install-cmd install-copyright

@@ -61,6 +61,19 @@ to lower case using Python's string class's
 .BR lower ()
 function.
 .TP
+.BR before "(\fIword1\fP : str, \fIword2\fP : str) -> bool"
+Collation function that checks that
+.I word1
+comes before
+.I word2
+in the dictionary (if so, it returns
+.BR True ,
+otherwise it returns
+.BR False ).
+
+The default implementation of this function compares
+in C locale.
+.TP
 .BR get "() -> tuple"
 Returns a 3-tuple containing, in order: the filename
 of the scanned dictionary, a list of the last word on
@@ -75,5 +88,3 @@ Print a list of all dictionaries.
 .TP
 .B ~/.config/dlu/dlurc
 The configuration file.
-.SH BUGS
-Please report bugs to m@maandree.se

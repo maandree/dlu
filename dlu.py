@@ -2,7 +2,7 @@
 
 import sys, os
 
-global dictionary_name, sought_word, display_envs, x_reads, reads, wordmod, standard_page_remap, load_dictionary, open_dictionary
+global dictionary_name, sought_word, display_envs, x_reads, reads, wordmod, standard_page_remap, load_dictionary, open_dictionary, before
 
 ## Parse command line.
 def usage():
@@ -43,6 +43,7 @@ if not f_list:
     reads = dict((disp, list(x_reads)) for disp in display_envs)
     reads[None] = [lambda f, p : ['jfbview', '-p', p, '--', f]]
     wordmod = lambda x : x.lower()
+    before = lambda a, b: a < b
     def standard_page_remap(offset, multiple = 1, multiple_offset = 0):
         return lambda p : (0 if p < multiple_offset else p - multiple_offset) // multiple + offset
     def open_dictionary(filename, page):
@@ -132,7 +133,7 @@ lasts = [(i, word) for i, word in enumerate(lasts)]
 
 for i, word in lasts:
     word = wordmod(word)
-    if sought_word <= word:
+    if not before(word, sought_word):
         page = i
         break
 else:

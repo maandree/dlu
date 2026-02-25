@@ -30,9 +30,17 @@ DESCRIPTION
 		Modifies and returns a word so that it can be used
 		to compare against known words in the dictionary.
 
-		The default implementation of this function converts the
-		word to lower case using Python's string class's
+		The default implementation of this function converts
+		the word to lower case using Python's string class's
 		lower() function.
+
+	before(word1 : str, word2 : str) -> bool
+		Collation function that checks that word1 comes before
+		word2 in the dictionary (if so, it returns True,
+		otherwise it returns False).
+
+		The default implementation of this function compares
+		in C locale.
 
 	get() -> tuple
 		Returns a 3-tuple containing, in order: the filename
